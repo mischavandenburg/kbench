@@ -10,4 +10,9 @@ mkdir -p bin
 cd ./metric-exporter
 
 [ "$(uname)" != "Darwin" ] && LINKFLAGS="-extldflags -static -s"
-CGO_ENABLED=0 go build -ldflags "-X main.VERSION=$VERSION $LINKFLAGS" -o ../bin/metric-exporter
+
+# original:
+# CGO_ENABLED=0 go build -ldflags "-X main.VERSION=$VERSION $LINKFLAGS" -o ../bin/metric-exporter
+
+# for mac:
+CGO_ENABLED=0 GOARCH=amd64 go build -ldflags "-X main.VERSION=$VERSION $LINKFLAGS" -o ../bin/metric-exporter
