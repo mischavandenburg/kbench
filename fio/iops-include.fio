@@ -1,2 +1,2 @@
-bs=6K
+bs=4K
 iodepth=64
